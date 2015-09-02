@@ -4,7 +4,7 @@ require 'faker'
 5.times do
   user = User.new(
     email:    Faker::Internet.email,
-    password: Faker::Lorem.characters(10)
+    password: Faker::Lorem.characters(10),
   )
   user.skip_confirmation!
   user.save!
@@ -19,6 +19,14 @@ users = User.all
   )
 end
 wikis = Wiki.all
+
+admin = User.new(
+  email:    'admin@example.com',
+  password: 'helloworld',
+  role:     'admin'
+)
+admin.skip_confirmation!
+admin.save!
 
 
 puts "Seed finished"

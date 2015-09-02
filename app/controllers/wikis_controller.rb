@@ -4,12 +4,13 @@ class WikisController < ApplicationController
   # GET /wikis
   # GET /wikis.json
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.visible_to(current_user)
   end
 
   # GET /wikis/1
   # GET /wikis/1.json
   def show
+    authorize @wiki
   end
 
   # GET /wikis/new
