@@ -59,6 +59,7 @@ class WikisController < ApplicationController
   # DELETE /wikis/1.json
   def destroy
     @wiki.destroy
+    authorize @wiki
     respond_to do |format|
       format.html { redirect_to wikis_url, notice: 'Wiki was successfully destroyed.' }
       format.json { head :no_content }

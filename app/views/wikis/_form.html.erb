@@ -23,7 +23,15 @@
     <%= f.label :image %><br>
     <%= f.text_field :image %>
   </div>
+
+    <% if current_user.role == "admin" || current_user.role == "premium" %>
+    <div class="form-group">
+      <%= f.label :public, class: 'checkbox' do %>
+      <%= f.check_box :public, options = {}, checked_value = "1", unchecked_value = "0" %> Public Wiki?
+        <% end %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+ <% end %>

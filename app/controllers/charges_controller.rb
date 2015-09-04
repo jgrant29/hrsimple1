@@ -16,9 +16,11 @@ class ChargesController < ApplicationController
      customer: customer.id, # Note -- this is NOT the user_id in your app
      amount: 1500,
      description: "BigMoney Membership - #{current_user.email}",
-     currency: 'usd'
+     currency: 'usd',
    )
- 
+
+    current_user.update_attribute(:role, 'premium') 
+
    flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
    redirect_to wikis_path # or wherever
  
@@ -34,7 +36,8 @@ class ChargesController < ApplicationController
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }", 
       description: "BigMoney Membership - #{current_user}",
-      amount: 1500
+      amount: 1500,
+      role: 'premium'
     }
   end
 end
