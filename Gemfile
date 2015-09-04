@@ -11,6 +11,7 @@ gem "pundit"
 gem 'faker'
 gem 'stripe'
 gem 'figaro', '1.0'
+gem 'redcarpet'
 
 group :production do 
   gem 'pg'

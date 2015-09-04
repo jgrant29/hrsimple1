@@ -2,12 +2,12 @@
 
 <p>
   <strong>Body:</strong>
-  <%= @wiki.body %>
+  <%= markdown_to_html @wiki.body %>
 </p>
 
 <p>
   <strong>Title:</strong>
-  <%= @wiki.title %>
+  <%= markdown_to_html @wiki.title %>
   
 </p>
 

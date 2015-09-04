@@ -17,8 +17,8 @@
   <tbody>
     <% @wikis.each do |wiki| %>
       <tr>
-        <td><%= wiki.body %></td>
-        <td><%= wiki.title %></td>
+        <td><%= markdown_to_html wiki.body %></td>
+        <td><%= markdown_to_html wiki.title %></td>
         <td><%= wiki.image %></td>
         <td><%= wiki.user %></td>
         <% if policy(Wiki.new).create? %>
