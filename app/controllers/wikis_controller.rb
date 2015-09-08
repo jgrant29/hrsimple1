@@ -4,7 +4,7 @@ class WikisController < ApplicationController
   # GET /wikis
   # GET /wikis.json
   def index
-    @wikis = Wiki.visible_to(current_user)
+    @wikis = policy_scope(Wiki)
   end
 
   # GET /wikis/1
@@ -34,6 +34,7 @@ class WikisController < ApplicationController
       if @wiki.save
         format.html { redirect_to @wiki, notice: 'Wiki was successfully created.' }
         format.json { render :show, status: :created, location: @wiki }
+        #Wiki.new.update_attribute(:public, false) 
       else
         format.html { render :new }
         format.json { render json: @wiki.errors, status: :unprocessable_entity }
@@ -74,6 +75,6 @@ class WikisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wiki_params
-      params.require(:wiki).permit(:body, :title, :image, :user_id)
+      params.require(:wiki).permit(:body, :title, :image, :user_id, :public)
     end
 end
