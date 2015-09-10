@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %strong Body:
+  = @wiki.body
+%p
+  %strong Title:
+  = markdown_to_html @wiki.title
+
+%p
+  %strong Image:
+  = @wiki.image
+
+= link_to 'Edit', edit_wiki_path(@wiki) |
+= link_to 'Back', wikis_path

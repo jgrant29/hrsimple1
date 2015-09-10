@@ -1,0 +1,31 @@
+= form_for(@wiki) do |f|
+  - if @wiki.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@wiki.errors.count, "error")
+        prohibited this wiki from being saved:
+      %ul
+        - @wiki.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :body
+    %br/
+    %script{:src => "js/epiceditor.js"}
+    #epiceditor
+    :javascript
+      var editor = new EpicEditor().load();
+  .field
+    = f.label :title
+    %br/
+    = f.text_field :title
+  .field
+    = f.label :image
+    %br/
+    = f.text_field :image
+  - if current_user.role == "admin" || current_user.role == "premium"
+    .form-group
+      = f.label :public, class: 'checkbox' do
+        = f.check_box :public, options = {}, checked_value = "1", unchecked_value = "0"
+        Public Wiki?
+    .actions
+      = f.submit

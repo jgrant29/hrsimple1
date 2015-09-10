@@ -12,6 +12,9 @@ gem 'faker'
 gem 'stripe'
 gem 'figaro', '1.0'
 gem 'redcarpet'
+gem 'haml'
+gem 'friendly_id', '~> 5.1.0'
+gem 'epic-editor-rails'
 
 group :production do 
   gem 'pg'
